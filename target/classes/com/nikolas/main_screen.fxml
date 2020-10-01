@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<?import javafx.scene.canvas.Canvas?>
+
+<VBox fx:id="vbox" layoutX="0.0" layoutY="0.0" prefHeight="600.0" prefWidth="800.0"
+      xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.nikolas.Controller">
+   <style>
+      -fx-padding: 10;
+   </style>
+   <fx:define>
+      <ToggleGroup fx:id="toggleGroup"/>
+   </fx:define>
+   <children>
+      <HBox alignment="TOP_LEFT" spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="0">
+         <style>
+            -fx-padding: 10;
+         </style>
+         <children>
+            <RadioButton fx:id="addNodes" mnemonicParsing="false" text="Nodes" toggleGroup="$toggleGroup"
+                         selected="true"/>
+            <RadioButton fx:id="addPaths" mnemonicParsing="false" text="Paths" toggleGroup="$toggleGroup"
+                         selected="false"/>
+            <Region prefWidth="200.0" HBox.hgrow="ALWAYS"/>
+            <CheckBox fx:id="delete" alignment="CENTER_RIGHT" contentDisplay="CENTER" mnemonicParsing="false"
+                      text="Delete" textAlignment="CENTER"/>
+         </children>
+      </HBox>
+      <Canvas fx:id="canvas" height="500" width="780" onMouseClicked="#canvasClick">
+      </Canvas>
+      <HBox alignment="BOTTOM_LEFT" spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="2">
+         <style>
+            -fx-padding: 10;
+         </style>
+         <children>
+            <ChoiceBox fx:id="chooseAlgorithmBox" prefWidth="75.0">
+               <items>
+                  <FXCollections fx:factory="observableArrayList">
+                     <String fx:value="BFS"/>
+                     <String fx:value="DFS"/>
+                     <String fx:value="Prim"/>
+                     <String fx:value="Dijkstra"/>
+                  </FXCollections>
+               </items>
+            </ChoiceBox>
+            <Button fx:id="runAlgorithm" onMouseClicked="#runAlgorithm" alignment="CENTER_LEFT"
+                    contentDisplay="CENTER" mnemonicParsing="false" text="RUN" textAlignment="CENTER"/>
+            <Region prefWidth="200.0" HBox.hgrow="ALWAYS"/>
+            <Button fx:id="previousRoute" onMouseClicked="#previousRoute" alignment="CENTER_RIGHT"
+                    contentDisplay="CENTER" mnemonicParsing="false" text="PREV" textAlignment="CENTER"/>
+            <Button fx:id="nextRoute" onMouseClicked="#nextRoute" alignment="CENTER_RIGHT" contentDisplay="CENTER"
+                    mnemonicParsing="false" text="NEXT" textAlignment="CENTER"/>
+            <Button fx:id="clearGraph" onMouseClicked="#clear" alignment="CENTER_RIGHT" contentDisplay="CENTER"
+                    mnemonicParsing="false" text="CLEAR" textAlignment="CENTER"/>
+            <ChoiceBox fx:id="clearChoiceBox" prefWidth="75.0">
+               <items>
+                  <FXCollections fx:factory="observableArrayList">
+                     <String fx:value="ROUTES"/>
+                     <String fx:value="GRAPH"/>
+                  </FXCollections>
+               </items>
+            </ChoiceBox>
+         </children>
+      </HBox>
+   </children>
+</VBox>
